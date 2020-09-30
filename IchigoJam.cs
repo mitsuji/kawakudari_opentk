@@ -36,6 +36,24 @@ public class Std15
 
   public void Putc (char c) {
     SetChar(cursorX,cursorY,c);
+    if (cursorX < buffW-1) {
+      cursorX ++;
+    } else {
+      if(cursorY < buffH-1) {
+        cursorX = 0;
+        cursorY ++;
+      }
+    }
+  }
+
+  public void Putstr (string s) {
+    foreach (char c in s) {
+      Putc(c);
+    }
+  }
+
+  public void Putnum (int n) {
+    Putstr(n.ToString());
   }
 
   public char Scr (int x, int y) {
