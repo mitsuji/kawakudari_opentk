@@ -49,7 +49,12 @@ public class Kawakudari
       std15.Putc('*');
 
       std15.Scroll();
-      if (std15.Scr(x,5) != '\0') running = false;
+      if (std15.Scr(x,5) != '\0') {
+        std15.Locate(0,23);
+        std15.Putstr("Game Over..");
+        std15.Putnum((int)frame);
+        running = false;
+      }
     }
     frame ++;
   }
