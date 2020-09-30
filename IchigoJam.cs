@@ -1,3 +1,4 @@
+using System;
 using OpenTK.Graphics.OpenGL;
 
 namespace IchigoJam
@@ -112,6 +113,15 @@ public class Std15
         }
       }
     }
+  }
+
+  public void Pset (int x, int y) {
+    int cx = x / 2;
+    int cy = y / 2;
+    char c = Scr(cx,cy);
+    char b = (char)Math.Floor(Math.Pow(2, ((y % 2) << 1) + (x % 2)));
+    char d = (char)(((c & 0xf0) == 0x80 ? c : 0x80) | b);
+    SetChar(cx, cy, d);
   }
 
   private void SetChar (int x, int y, char c) {
