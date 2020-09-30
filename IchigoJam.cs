@@ -5,6 +5,11 @@ namespace IchigoJam
 
 public class Std15
 {
+  public enum Direction
+  {
+    Up,Right,Down,Left
+  }
+
   private const int CHAR_W = 8;
   private const int CHAR_H = 8;
 
@@ -68,13 +73,42 @@ public class Std15
     }
   }
 
-  public void Scroll() {
+  public void Scroll(Direction dir) {
     for (int y = 0; y < buffH; y++) {
       for (int x = 0; x < buffW; x++ ) {
-        if (y == buffH-1) {
-          SetChar(x,y,'\0');
-        } else {
-          SetChar(x,y,Scr(x,y+1));
+        switch (dir) {
+	case Direction.Up : {
+          if (y == buffH-1) {
+            SetChar(x,y,'\0');
+          } else {
+            SetChar(x,y,Scr(x,y+1));
+          }
+        }
+        break;
+	case Direction.Right : {
+          if (x == buffW-1) {
+            SetChar(buffW-x-1,y,'\0');
+          } else {
+            SetChar(buffW-x-1,y,Scr((buffW-x-1)-1,y));
+          }
+        }
+        break;
+	case Direction.Down : {
+          if (y == buffH-1) {
+            SetChar(x,(buffH-y-1),'\0');
+          } else {
+            SetChar(x,(buffH-y-1),Scr(x,(buffH-y-1)-1));
+          }
+        }
+        break;
+	case Direction.Left : {
+          if (x == buffW-1) {
+            SetChar(x,y,'\0');
+          } else {
+            SetChar(x,y,Scr(x+1,y));
+          }
+        }
+        break;
         }
       }
     }

@@ -47,8 +47,7 @@ public class Kawakudari
       std15.Putc('0');
       std15.Locate(rand.Next(0,32),23);
       std15.Putc('*');
-
-      std15.Scroll();
+      std15.Scroll(Std15.Direction.Up);
       if (std15.Scr(x,5) != '\0') {
         std15.Locate(0,23);
         std15.Putstr("Game Over..");
