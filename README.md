@@ -54,6 +54,8 @@ To run it
 ```
 $ mono Kawakudari.exe
 ```
+(In windows environment, you can run it by just double click 'Kawakudari.exe' in Explorer)
+
 
 
 ## License
